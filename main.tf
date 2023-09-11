@@ -14,12 +14,6 @@ data "aws_ami" "app_ami" {
   owners = ["979382823631"] # Bitnami
 }
 
-data "aws_vpc" "default" {
-  default = true
-}
-
-
-
 
 
 
@@ -50,7 +44,7 @@ module "blog_sg" {
 resource "aws_security_group" "blog" {
   name        = "blog"
   description = "Allow https and https in .Allow everything out"
-  vpc_id      = data.aws_vpc.default
+
 }
 
 resource "aws_security_group_rule" "blog_http_in" {
